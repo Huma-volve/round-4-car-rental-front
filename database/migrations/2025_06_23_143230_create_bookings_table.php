@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('bookings', function (Blueprint $table) {
               $table->id();
               $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
-              $table->foreignId('car_id')->constrained('cars')->onDelete('cascade');
+              $table->unsignedBigInteger('car_id');
+              $table->foreign('car_id')->references('id')->on('cars')->onDelete('cascade');
               $table->string('pickup_location');
               $table->date('pickup_date');
               $table->time('pick_up_time');
