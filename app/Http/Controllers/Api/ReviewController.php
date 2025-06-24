@@ -20,6 +20,7 @@ class ReviewController extends Controller
             $reviewResponse = ReviewApiResponse::sendResponse(200, 'No Reviews Found',[]);
             return $reviewResponse;
         }
+        //this is the response for the reviews
         else{
              $reviewResponse=ReviewApiResponse::sendResponse(200, 'All Reviews Retrieved Successfully',
         ReviewResource::collection($allreviews));
