@@ -42,18 +42,21 @@ class CarController extends Controller
     //  Get recommended cars
    public function recommended()
 { 
-    $cars = Car::withAvg('reviews', 'rating')
-        ->having('reviews_avg_rating', '> =', 4)
-        ->get();
+        $cars = Car::whereHas('reviews', function ($query) {
+            $query->where('rating', '>=', 4);
+        })->with(['reviews' => function ($query) {
+            $query->select( 'car_id', 'rating')->where('rating', '>=', 4);
+        }])->get();
 
-    return response()->json($cars);
-}
-
-
-
-
-}
+        return response()->json($cars);
+    }}
 
 
 
 
+
+
+
+
+
+    
