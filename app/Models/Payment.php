@@ -7,11 +7,18 @@ use App\Models\Review;
 
 class Payment extends Model
 {
-    protected $fillable = [
-        'booking_id',
+  protected $fillable = [
         'amount',
         'payment_method',
-        'status',
+        'payment_status',
+        'currency',
+        'card_number',
+        'card_type',
+        'cvc',
+        'Expration_date',  // أو 'expiration_date' حسب اسم العمود
+        'card_holder_name',
+        'booking_id',
+        'user_id',
     ];
 
     public function booking()
@@ -28,6 +35,6 @@ class Payment extends Model
     }
     public function reviews()
     {
-        return $this->hasMany(Reviews::class);
+        return $this->hasMany(Review::class);
     }
 }

@@ -15,7 +15,7 @@ return new class extends Migration
              $table->id();
             $table->string('car_model');
             $table->string('gas_type')->nullable();
-            $table->string('sreering')->nullable();
+            $table->string('steering')->nullable();
             $table->decimal('rental_price_per_day', 10, 2)->nullable();
             $table->string('car_image')->nullable();
             $table->string('car_type')->nullable();
