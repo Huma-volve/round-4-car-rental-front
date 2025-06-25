@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Helpers\ReviewApiResponse;
+use App\Helpers\ApiResponse;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\ReviewResource;
 use App\Models\Review;
@@ -17,12 +17,12 @@ class ReviewController extends Controller
     {
         $allreviews = Review::with(['car', 'user'])->get();
         if ($allreviews->isEmpty()) {
-            $reviewResponse = ReviewApiResponse::sendResponse(200, 'No Reviews Found',[]);
+            $reviewResponse = ApiResponse::sendResponse(200, 'No Reviews Found',[]);
             return $reviewResponse;
         }
         //this is the response for the reviews
         else{
-             $reviewResponse=ReviewApiResponse::sendResponse(200, 'All Reviews Retrieved Successfully',
+             $reviewResponse=ApiResponse::sendResponse(200, 'All Reviews Retrieved Successfully',
         ReviewResource::collection($allreviews));
         return $reviewResponse ;
         }
