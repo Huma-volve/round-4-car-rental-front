@@ -2,7 +2,7 @@
 
 namespace App\Helpers;
 
-class ReviewApiResponse
+class ApiResponse
 {
     /**
      * Create a new class instance.
