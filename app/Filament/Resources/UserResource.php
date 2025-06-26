@@ -5,12 +5,15 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\UserResource\Pages;
 use App\Filament\Resources\UserResource\RelationManagers;
 use App\Models\User;
+use Dom\Text;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Tables\Columns\ImageColumn;
+use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -40,7 +43,16 @@ class UserResource extends Resource
     {
         return $table
             ->columns([
-                //
+
+            ImageColumn::make('image')->label('Image')->circular(),
+            TextColumn::make('name')->searchable()->sortable(),
+            TextColumn::make('email')->searchable()->sortable(),
+            TextColumn::make('job')->sortable(),
+            TextColumn::make('phoneNumber')->label('Phone'),
+            TextColumn::make('city'),
+            TextColumn::make('adress'),
+            TextColumn::make('created_at')->label('Created')->dateTime()->sortable(),
+                
             ])
             ->filters([
                 //
