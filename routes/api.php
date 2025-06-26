@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/cars', [CarController::class, 'index']); //all cars
 Route::get('/cars/category/{category}', [CarController::class, 'filterByCategory']); 
-Route::get('cars/{id}', [CarController::class, 'show']); // details
+Route::get('cars/{id}', [CarController::class, 'show']); //car detail
 Route::get('/recent', [CarController::class, 'recent']); //  recent
 Route::get('/recommended', [CarController::class, 'recommended']); //recommended cars
 
